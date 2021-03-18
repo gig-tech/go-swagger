@@ -148,6 +148,10 @@ func (g GenSchema) PrintTags() string {
 			tags["example"] = g.Example // json representation of the example object
 		} else if tag == "description" && len(g.Description) > 0 {
 			tags["description"] = g.Description
+		} else if tag == "flag" {
+			if g.Required {
+				tags["flag"] = ",required"
+			}
 		} else {
 			tags[tag] = tags["json"]
 		}
